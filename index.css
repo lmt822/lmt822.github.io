@@ -1,0 +1,9 @@
+body{
+	text-align: center;
+	font-size: 18px;
+	font-family: "Comic Sans MS";
+	border-style: dotted;
+}
+#title{
+	font-size: 40px;
+}
