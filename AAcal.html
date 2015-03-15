@@ -51,7 +51,7 @@
 							Number(own[i]) = Number(own[i]) - payment;
 						}else{
 							var payment = Number(own[i]);
-							document.getElementById("output").innerHTML = document.getElementById("output").innerHTML+"2<p>user"+j+" should pay user"+i+" "+payment+"</p>";
+							document.getElementById("output").innerHTML = document.getElementById("output").innerHTML+"<p>user"+j+" should pay user"+i+" "+payment+"</p>";
 							//console.log("<p>user"+j+" should pay user"+i+" "+payment+"</p>");
 							own[i] = 0;
 							own[j] = payment + Number(own[j]);
