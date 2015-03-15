@@ -5,9 +5,11 @@ body{
 #output{
 	font-family: "Comic Sans MS";
 	font-size: 30px;
-	float: right;
+	
 }
-
+#left{
+	float: left;
+}
 #center{
 
 }
