@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AAcalculator</title>
+	<meta charset="utf-8" />
+	<script type="text/javascript">
+	function init(){
+		document.getElementById("output").innerHTML = "";
+	}
+	function start(){
+		document.getElementById("output").innerHTML = "";
+		var length = document.getElementsByName("length")[0].value;
+		var user = [];
+		for (i = 0; i < length; i++){
+			user.push(document.getElementsByName("user")[i].value);
+		}
+		calculate(user);
+	}
+	function calculate(number){
+		var sum = 0;
+		for (i = 0; i < number.length; i++){
+			sum += Number(number[i]);
+		}
+		//console.log("sum is "+sum);
+		var average = sum / number.length;
+		//console.log("average is "+average);
+		var own = []
+		for (i = 0; i < number.length; i++){
+			var temp = (Number(number[i]) - average).toFixed(2);
+			own.push(temp);
+			//document.getElementById("output").innerHTML = document.getElementById("output").innerHTML+"<p>user"+i+" is "+temp+"</p>";
+		}
+		for (i = 0; i < number.length; i++){
+			if (Number(own[i]) == 0){
+				continue;
+			}
+			if (Number(own[i]) > 0){
+				for (j = i; j < number.length; j++){
+					if (Number(own[i]) == 0){
+						break;
+					}
+					if (own[j] >= 0){
+						continue;
+					}else{
+						if ((Number(own[i]) + Number(own[j])) >= 0){
+							var payment = Number(own[j]) * -1;
+							document.getElementById("output").innerHTML = document.getElementById("output").innerHTML+"<p>user"+j+" should pay user"+i+" "+payment+"</p>";
+							//console.log("1<p>user"+j+" should pay user"+i+" "+payment+"</p>");
+							own[j] = 0;
+							Number(own[i]) = Number(own[i]) - payment;
+						}else{
+							var payment = Number(own[i]);
+							document.getElementById("output").innerHTML = document.getElementById("output").innerHTML+"2<p>user"+j+" should pay user"+i+" "+payment+"</p>";
+							//console.log("<p>user"+j+" should pay user"+i+" "+payment+"</p>");
+							own[i] = 0;
+							own[j] = payment + Number(own[j]);
+						}
+					}
+				}
+			}
+			if (Number(own[i]) < 0){
+				for (j = i; j < number.length; j++){
+					if (Number(own[i]) == 0){
+						break;
+					}
+					if (Number(own[j]) <= 0){
+						continue;
+					}else{
+						if ((Number(own[i]) + Number(own[j])) >= 0){
+							
+							var payment = Number(own[i]) * -1;
+							document.getElementById("output").innerHTML = document.getElementById("output").innerHTML+"<p>user"+i+" should pay user"+j+" "+payment+"</p>";
+							//console.log("3<p>user"+i+" should pay user"+j+" "+payment+"</p>");
+							own[i] = 0;
+							own[j] = Number(own[j]) - payment;
+						}else{
+							var payment = Number(own[j]);
+							document.getElementById("output").innerHTML = document.getElementById("output").innerHTML+"<p>user"+i+" should pay user"+j+" "+payment+"</p>";
+							//console.log("4<p>user"+i+" should pay user"+j+" "+payment+"</p>");
+							own[j] = 0;
+							own[i] = Number(own[i]) + payment;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	</script>
+</head>
+<body>
+	<h1 id="title">Calculator</h1>
+	<form>
+		How many participants do you have: <input type="number" name="length"><br>
+		<input type="reset" value="Reset Form" onclick="init()"><br>
+		user 0:<br>
+		<input type="number" step="0.01" name="user"><br>
+		user 1:<br>
+		<input type="number" step="0.01" name="user"><br>
+		user 2:<br>
+		<input type="number" step="0.01" name="user"><br>
+		user 3:<br>
+		<input type="number" step="0.01" name="user"><br>
+		user 4:<br>
+		<input type="number" step="0.01" name="user"><br>
+		user 5:<br>
+		<input type="number" step="0.01" name="user"><br>
+		user 6:<br>
+		<input type="number" step="0.01" name="user"><br>
+		user 7:<br>
+		<input type="number" step="0.01" name="user"><br>
+		user 8:<br>
+		<input type="number" step="0.01" name="user"><br>
+		user 9:<br>
+		<input type="number" step="0.01" name="user"><br><br>
+		<input type="button" value = "Submit" onclick="start()">
+	</form>
+	<div id = "output"></div>
+	<p><img src="cc.jpg" alt="MEMEMEME" width="400" height="300"/></p>
+</body>
+</html>
