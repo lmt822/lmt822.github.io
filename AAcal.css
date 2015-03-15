@@ -4,12 +4,9 @@ body{
 }
 #output{
 	font-family: "Comic Sans MS";
-	font-size: 30px;
+	font-size: 15px;
 	
 }
 #left{
 	float: left;
-}
-#center{
-
 }
